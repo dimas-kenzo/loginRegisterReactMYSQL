@@ -1,96 +1,86 @@
-🧑‍💻 Fullstack Login Register App (React + Node.js + MySQL)
+🔐 Login Authentication App
 
-A full-featured Login & Register App built with
-🖥️ React + Bootstrap (Frontend) and
-⚙️ Node.js + Express + MySQL + Sequelize (Backend).
+Web Programmer Challenge – PT. Javis Teknologi Albarokah
 
-This project provides a clean, modern authentication system with JWT, protected routes, and RESTful APIs.
+A simple and secure login system built with React.js (Frontend) and Node.js + Express + MySQL (Backend) using JWT + HttpOnly Cookies for authentication.
 
-⚙️ Backend Setup
-1️⃣ Navigate to backend folder
+🚀 Tech Stack
+
+Frontend:
+React.js (Vite)
+Bootstrap 5
+Axios
+React Router DOM
+
+Backend:
+Node.js + Express.js
+MySQL (via Sequelize ORM)
+JWT (jsonwebtoken)
+bcrypt.js (password hashing)
+dotenv
+cookie-parser
+express-rate-limit
+
+⚙️ Installation & Setup
+🧩 1. Clone Repository
+git clone https://github.com/yourusername/login-auth-javis.git
+cd login-auth-javis
+
+🗄️ 2. Setup Backend
 cd backend
-
-2️⃣ Install dependencies
 npm install
 
-3️⃣ Create .env file
-
-Isi dengan konfigurasi berikut:
-
+Buat file .env:
 PORT=5000
 DB_HOST=localhost
 DB_USER=root
 DB_PASSWORD=
-DB_NAME=loginapp
+DB_NAME=db
 JWT_SECRET=your_secret_key
+JWT_EXPIRES_IN=1h
 
 
-💡 Pastikan MySQL sudah aktif (XAMPP / Laragon / Docker).
+Buat database di MySQL:
+CREATE DATABASE login_app;
 
-4️⃣ Setup database
 
-Buka terminal dan jalankan MySQL:
-
-CREATE DATABASE loginapp;
-
-5️⃣ Run backend server
+Jalankan server:
 npm run dev
 
-
-Server berjalan di:
+Backend akan berjalan di:
 👉 http://localhost:5000
 
-🧱 Backend Tech Stack
-🚀 Node.js + Express.js
-🗄️ MySQL + Sequelize ORM
-🔐 JWT Authentication
-🧩 bcrypt.js for password hashing
-⚙️ dotenv for environment variables
-🔁 CORS enabled for API access
-
-🖥️ Frontend Setup
-1️⃣ Navigate to frontend folder
-cd frontend
-2️⃣ Install dependencies
+💻 3. Setup Frontend
+cd ../frontend
 npm install
-3️⃣ Install Bootstrap
-npm install bootstrap
-4️⃣ Import Bootstrap
-
-Tambahkan di main.jsx:
-
-import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap.bundle.min.js";
-
-5️⃣ Run the app
 npm run dev
 
 Frontend berjalan di:
 👉 http://localhost:5173
 
-🔒 Authentication Flow
-User registers → Data disimpan di MySQL
-User login → Backend verifikasi password
-JWT token dikirim ke frontend
-Frontend simpan token (localStorage)
-Protected routes hanya bisa diakses dengan token valid
-Logout menghapus token
+🧠 Project Architecture
+login-auth-javis/
+├── backend/
+│   ├── server.js
+│   ├── config/db.js
+│   ├── controllers/authController.js
+│   ├── routes/authRoutes.js
+│   ├── middleware/authMiddleware.js
+│   └── models/User.js
+│
+└── frontend/
+    ├── src/
+    │   ├── pages/Login.jsx
+    │   ├── pages/Register.jsx
+    │   ├── pages/Dashboard.jsx
+    │   ├── context/AuthContext.jsx
+    │   ├── App.jsx
+    │   └── main.jsx
 
-🧪 Example Users
-Username	Email	            Password
-admin	    admin@example.com   123456
-
-💡 Features
-✅ Register user baru
-✅ Login & Logout
-✅ JWT Authentication
-✅ Protected Routes
-✅ Validasi input
-✅ Bootstrap UI (Responsif)
-✅ Error handling backend/frontend
-
-👨‍💻 Author
-
-Dimas Kenzo
-💼 Fullstack Developer
-📧 kainbekas@gmail.com
+🔄 Flow Autentikasi
+User mengisi form login (email/username & password).
+Backend verifikasi user & password (bcrypt compare).
+Jika benar → kirim JWT token via HttpOnly cookie.
+Frontend menyimpan status login lewat context (AuthContext).
+/dashboard hanya dapat diakses jika JWT valid (middleware).
+Logout menghapus cookie dan menghapus sesi.
