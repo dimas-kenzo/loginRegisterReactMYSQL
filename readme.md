@@ -58,24 +58,7 @@ npm run dev
 Frontend berjalan di:
 👉 http://localhost:5173
 
-🧠 Project Architecture
-login-auth-javis/
-├── backend/
-│   ├── server.js
-│   ├── config/db.js
-│   ├── controllers/authController.js
-│   ├── routes/authRoutes.js
-│   ├── middleware/authMiddleware.js
-│   └── models/User.js
-│
-└── frontend/
-    ├── src/
-    │   ├── pages/Login.jsx
-    │   ├── pages/Register.jsx
-    │   ├── pages/Dashboard.jsx
-    │   ├── context/AuthContext.jsx
-    │   ├── App.jsx
-    │   └── main.jsx
+
 
 🔄 Flow Autentikasi
 User mengisi form login (email/username & password).
